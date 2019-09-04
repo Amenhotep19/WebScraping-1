@@ -12,10 +12,19 @@ puppeteer
       return page.content();
     });
   })
-  .then(function(html) {
-    $('div > h3', html).each(function() {
-      console.log($(this).text());
-    });
+  .then((html) => {
+    console.log($('div > h3', html).text().length)
+    return {
+      total: $('div > h3', html).text().length,
+      html: html
+    }
+  })
+  .then(object => {
+    const redditPosts = [];
+    for (let i = 0; i < object.total; i++) {
+      redditPosts.push($('div > h3', object.html).text());
+    }
+    return redditPosts
   })
   .catch(function(error) {
     console.log(error)
