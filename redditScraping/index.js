@@ -22,9 +22,12 @@ puppeteer
   .then(object => {
     const redditPosts = [];
     for (let i = 0; i < object.total; i++) {
-      redditPosts.push($('div > h3', object.html).text());
+      redditPosts.push($('div > h3', object.html).text())
     }
     return redditPosts
+  })
+  .then(data => {
+    console.log(data)
   })
   .catch(function(error) {
     console.log(error)
