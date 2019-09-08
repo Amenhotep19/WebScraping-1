@@ -2,7 +2,7 @@ const requestPromise = require('request-promise');
 const $ = require('cheerio');
 const url = 'https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States';
 
-const birthdayInfo = url => {
+const info = url => {
   return requestPromise(url)
     .then(html => {
       return {
@@ -23,7 +23,7 @@ requestPromise(url)
     }
     return Promise.all(
       wikiUrls.map(url => {
-        return birthdayInfo('https://en.wikipedia.org' + url);
+        return info('https://en.wikipedia.org' + url);
       })
     );
   })
