@@ -13,18 +13,16 @@ puppeteer
     });
   })
   .then((html) => {
-    console.log($('div > h3', html).text().length)
-    return {
-      total: $('div > h3', html).text().length,
-      html: html
-    }
-  })
-  .then(object => {
+    const redditpostsLength = $('div > h3', html).text().length;
     const redditPosts = [];
-    for (let i = 0; i < object.total; i++) {
-      redditPosts.push($('div > h3', object.html).text())
+    for (let i = 0; i < 1; i++) {
+      console.log($('div > h3', html).toString())
+      $('div > h3', html).each(post => {
+        console.log(post)
+        // redditPosts.push(post)
+      })
     }
-    return redditPosts
+      return redditPosts
   })
   .then(data => {
     console.log(data)
