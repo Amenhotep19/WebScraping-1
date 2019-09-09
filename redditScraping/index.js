@@ -14,14 +14,8 @@ puppeteer
   })
   .then((html) => {
     const string = $('a[href*="/r/"] > div > h3', html).toString()
-    console.log(string)
-    const htmlTagRegex = new RegExp("\s+(<[^>]*>)", "g");
-    const redditPosts = string.split(htmlTagRegex)
-    console.log(redditPosts)
-    // $('a[href*="/r/"] > div > h3', html).each(function() {
-    //   redditPosts.push({
-    //     title: $(this).text(),
-    //   });
+    let redditPosts = [];
+    redditPosts.push(string)
     return redditPosts
   })
   .then(data => {
