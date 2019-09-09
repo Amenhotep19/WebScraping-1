@@ -13,9 +13,11 @@ puppeteer
     });
   })
   .then((html) => {
-    console.log($('a[href*="/r/"] > div > h3', html).toString())
-    console.log($('a[href*="/r/"] > h3', html).toString())
-    const redditPosts = [];
+    const string = $('a[href*="/r/"] > div > h3', html).toString()
+    console.log(string)
+    const htmlTagRegex = new RegExp("\s+(<[^>]*>)", "g");
+    const redditPosts = string.split(htmlTagRegex)
+    console.log(redditPosts)
     // $('a[href*="/r/"] > div > h3', html).each(function() {
     //   redditPosts.push({
     //     title: $(this).text(),
