@@ -25,6 +25,7 @@ const getCompanies = async () => {
 
 getCompanies()
   .then(result => {
+    console.log(result)
     const transformed = new otocsv(result);
     return transformed.toDisk('./output.csv');
   })
