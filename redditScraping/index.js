@@ -13,7 +13,7 @@ puppeteer
     });
   })
   .then((html) => {
-    const string = $('a[href*="/r/"] > div > h3', html).toString()
+    const string = $('a[href*="/r/"] > div > h3', html).text()
     let redditPosts = [];
     redditPosts.push(string)
     return redditPosts
